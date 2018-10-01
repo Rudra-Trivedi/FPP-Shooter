@@ -30,6 +30,9 @@ protected:
 	UFUNCTION()	
 	void HandleOverlap(UPrimitiveComponent* OverlappedComponent, AActor* other, UPrimitiveComponent* OtherComp, int32 BodyIndex, bool bFromSweep, const FHitResult& SweepResult);
 
+	UPROPERTY(EditDefaultsOnly, Category = "ObjectiveSound")
+	USoundBase* ObjectiveMissingSound;
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;

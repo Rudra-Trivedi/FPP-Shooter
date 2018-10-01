@@ -11,14 +11,22 @@ class AFPSGameMode : public AGameModeBase
 {
 	GENERATED_BODY()
 
+protected:
+
+	UPROPERTY(EditDefaultsOnly, Category = "Viewpoint")
+	TSubclassOf<AActor> ViewpointClass;
+
 public:
 
 	AFPSGameMode();
 
-	void CompleteMission(APawn* InstigatorPawn);
+	void CompleteMission(APawn* InstigatorPawn, bool MissionSuccess);
 
 	UFUNCTION(BlueprintImplementableEvent, Category = "GameMode")
-	void OnMissionComplete(APawn* InstigatorPawn);
+	void OnMissionComplete(APawn* InstigatorPawn, bool MissionSuccess);
+
+	UPROPERTY(EditDefaultsOnly, Category = "Sound")
+	USoundBase* EndGameSound;
 };
 
 

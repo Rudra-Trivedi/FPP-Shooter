@@ -5,6 +5,7 @@
 #include "Components/SphereComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "FPSCharacter.h"
+#include "Kismet/GameplayStatics.h"
 
 
 // Sets default values
@@ -29,6 +30,7 @@ AFPSObjectiveActor::AFPSObjectiveActor()
 // Called when the game starts or when spawned
 void AFPSObjectiveActor::BeginPlay()
 {
+	UGameplayStatics::PlaySound2D(this, GameStartSound);
 	Super::BeginPlay();
 	PlayEffects();
 }
@@ -51,6 +53,8 @@ void AFPSObjectiveActor::NotifyActorBeginOverlap(AActor * OtherActor)
 	if (MyCharacter)
 	{
 		MyCharacter->bIsCarryingObjective = true;
+
+		UGameplayStatics::PlaySound2D(this, ObjectivePickupSound);
 
 		Destroy();
 	}
